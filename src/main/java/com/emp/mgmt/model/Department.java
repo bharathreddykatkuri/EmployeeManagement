@@ -7,30 +7,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table (name = "employee")
-public class Employee {
-
+@Table (name = "department")
+public class Department {
+	
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int employeeID;
+	private int departmentID;
 	
 	@Column(name="name")
 	private String name;
 	
-	@Column(name="email")
-	private String email;
-	
-	@Column(name="phone")
-	private Long phone;
+	@Column(name="description")
+	private String description;
 	
 	@Column(name="created_by")
 	private Integer createdBy;
@@ -38,31 +32,13 @@ public class Employee {
 	@Column(name="created_on")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createdOn;
-	
-	@ManyToOne
-	@JoinColumn(name = "department_id")
-	private Department department;
-	
-	
-	public Employee(){
-		
-	}
-	
-	public Employee(String name, String email, Long phone, Integer createdBy, Date createdOn) {
-		super();
-		this.name = name;
-		this.email = email;
-		this.phone = phone;
-		this.createdBy = createdBy;
-		this.createdOn = createdOn;
+
+	public int getDepartmentID() {
+		return departmentID;
 	}
 
-	public int getEmployeeID() {
-		return employeeID;
-	}
-
-	public void setEmployeeID(int employeeID) {
-		this.employeeID = employeeID;
+	public void setDepartmentID(int departmentID) {
+		this.departmentID = departmentID;
 	}
 
 	public String getName() {
@@ -73,21 +49,14 @@ public class Employee {
 		this.name = name;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public Long getPhone() {
-		return phone;
-	}
-
-	public void setPhone(Long phone) {
-		this.phone = phone;
-	}
 
 	public Integer getCreatedBy() {
 		return createdBy;
@@ -104,7 +73,5 @@ public class Employee {
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
-	
-	
-	
+
 }
