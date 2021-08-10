@@ -30,17 +30,17 @@ public class EmployeeController {
 		return employeeService.getAllEmployees();
 	}
 	
-	@PostMapping("/employees")
+	@PostMapping("/employees/add/")
 	public void addEmployees(@RequestBody Employee employee){
 		employeeService.addEmployee(employee);
 	}
 
-	@PutMapping("/employees/{id}")
+	@PostMapping("/employees/update/{id}")
 	public void updateEmployee(@RequestBody Employee e, @PathVariable int id){
 		employeeService.updateEmployee(e, id);
 	}
 	
-	@DeleteMapping("employees/{id}")
+	@PostMapping("employees/delete/{id}")
 	public void deleteEmployeeByID(@RequestBody Employee e, @PathVariable int id){
 		employeeService.deleteEmployeeByID(id);
 	}

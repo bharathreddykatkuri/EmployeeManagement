@@ -28,7 +28,7 @@ public class EmployeeService {
 	}
 	
 	public void deleteEmployeeByID(int id){
-		employeeRepository.delete(id);
+		employeeRepository.deleteById(id);
 	}
 	
 }
